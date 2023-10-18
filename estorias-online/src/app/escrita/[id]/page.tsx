@@ -9,14 +9,19 @@ import { useParams } from 'next/navigation';
 import React, { useContext, useEffect, useState } from 'react';
 import 'react-quill/dist/quill.snow.css';
 
+interface ArrayDivs {
+    arr: string[]
+}
+
 export default function Escrita(props:any) {
-    const [texto, setTexto] = useState('');
+    const [ texto, setTexto ] = useState('');
     const [titulo, setTitulo] = useState('');
     const [escritor, setEscritor] = useState('');
     const { estoria, setEstoria } = useContext(EstoriaContext)
     const PageProps = useParams()
 
-    const divArray = new Array()
+    const [arr, setArr] = useState([''])
+    // const divArray = new Array()
 
     useEffect(()=>{
         const a = estoria.filter((e:any)=>{
@@ -77,15 +82,10 @@ export default function Escrita(props:any) {
         }
     }
 
-    const AddTexto = () =>{
-        divArray.push(
-            // <TrechoEstoria key={divArray.length+1}/>
-            <h1 key={divArray.length+1}>Oi</h1>
-        )
-        console.log(divArray)
+    function AddDiv(value:string){
+        setArr([...arr, value])
     }
 
-    
     return (
     <div className='flex flex-col items-center w-full h-screen gap-4 p-2'>
 
@@ -101,23 +101,31 @@ export default function Escrita(props:any) {
                 titulo={titulo} handleTitulo={handleTitulo} escritor={escritor} handleEscritor={handleEscritor}
             />
 
+            {
+                arr.map((value:string, index:number)=>{
+                    if (value ==='texto'){
+                        return(
+                            <TrechoEstoria key={index} setEstoria={setEstoria}/>
+                        )
+                    }
+                    if (value === 'imagem'){
+                        return(<TrechoImagem key={index} texto={texto} setTexto={setTexto} />)
+                    }
+                    else {
+                        return('')
+                    }
+                })
+            }
+
             <div className='flex gap-8'>
-                <button onClick={()=>AddTexto()}>
+                <button onClick={()=>AddDiv('texto')}>
                     Adicionar Texto
                 </button>
+                <button onClick={()=>AddDiv('imagem')}>
+                    Adicionar Imagem
+                </button>
             </div>
-
-                {
-                    divArray.map((div:any)=>{
-                        return(
-                            div
-                        )
-                    })
-                }
-            {/* <TrechoImagem />
-             */}
-
-        </div>
+            </div>
     </div>
     )
 }

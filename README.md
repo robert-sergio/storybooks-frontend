@@ -8,6 +8,7 @@ Frontend de aplicação de Estorias Online baseado em React - NextJS
 * [x] Tela de leitura
 * [x] Editar Estorias
 * [x] Excluir Estorias
+* [ ] Nao permitir salvar Estorias sem nome e sem escritor
 * [ ] Adicionar trechos de Estoria
 * [ ] Adicionar links de imagens
 * [ ] Download Estoria
@@ -21,3 +22,25 @@ Frontend de aplicação de Estorias Online baseado em React - NextJS
 * [ ] Traduzir para outro idioma
 * [ ] Usar chatgpt ou outra coisa para traduzir para ingles
 * [ ] Usar chatgpt para ver se texto é impróprio para crianças
+
+## Documentacao
+
+### JSON das Estorias
+
+```javascript
+    {
+        id: 1,
+        estoria:[
+            {
+                idTrecho:1,
+                tipoTrecho:'Imagem',
+                valor: '<img src=''></img>'
+            },
+            {
+                idTrecho:2,
+                tipoTrecho:'Texto',
+                valor: '<p>AlgumTexto</p>'
+            }
+        ]
+    }
+```

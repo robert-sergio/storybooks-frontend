@@ -1,18 +1,42 @@
 'use client'
 import Image from "next/image";
+import { useState } from "react";
 
-export default function TrechoImagem(){
+export default function TrechoImagem(props:any){
+    const { texto, setTexto} = props
+    const [ adicionado, setAdicionado ] = useState(false);
+
+    const [ imgUrl, setImgUrl] = useState('')
+
+    const handleImg = (event:any)=>{
+        const trecho = texto+'<section><img src="'+imgUrl+'"></section>'
+        setTexto(trecho)
+        setAdicionado(true)
+    }
+
+    const handleChange = (event:any)=>{
+        setImgUrl(event.target.value)
+    }
+
     return(
-        <>
-            <button>Adicionar Imagem</button>
-            <div>
-                <span>Url Imagem</span>
-                <input className="w-3/4 bg-slate-200" type="text"></input>
-            </div>
-            <div>
-                <img className="border rounded-md p-2" src='https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/01-cat-names-nationalgeographic_1525054.jpg?w=400&h=400&q=75'></img>
-            </div>
-            {/* <Image></Image> */}
-        </>
+        <div className="border border-slate-600 p-2">
+            {
+                adicionado === false?
+                <div className="flex items-center gap-2">
+                    <input 
+                        placeholder="url da imagem" 
+                        className="w-3/4 bg-slate-200 p-2" type="text"
+                        onChange={handleChange}
+                    ></input>
+                    <button
+                        className="bg-slate-200 p-2 rounded" 
+                        onClick={handleImg}>Adicionar Imagem</button>
+                </div>
+                :
+                <div className="flex justify-center items-center gap-2">
+                    <Image width={250} height={250} className="border rounded-md p-2" src={imgUrl} alt=''></Image>
+                </div>
+            }
+        </div>
     )
 }
