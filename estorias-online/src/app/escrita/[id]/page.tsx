@@ -1,29 +1,35 @@
 'use client'
+import DescricaoEstoria from '@/components/descricao_estoria';
+import TrechoImagem from '@/components/trecho imagem';
+import HeaderEstoria from '@/components/header_estoria';
+import TrechoEstoria from '@/components/trecho_estoria';
 import { EstoriaContext } from '@/data/context/estoriacontext';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import React, { useContext, useEffect, useState } from 'react';
-import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
 export default function Escrita(props:any) {
     const [texto, setTexto] = useState('');
     const [titulo, setTitulo] = useState('');
     const [escritor, setEscritor] = useState('');
-
     const { estoria, setEstoria } = useContext(EstoriaContext)
-    
     const PageProps = useParams()
 
-    useEffect(()=>{
-        estoria.map((a:any)=>{
-            if (Number(a.id) === Number(PageProps.id)){
-                setTitulo(a.titulo)
-                setEscritor(a.escritor)
-                setTexto(a.estoria)
-            }
-        })
+    const divArray = new Array()
 
+    useEffect(()=>{
+        const a = estoria.filter((e:any)=>{
+            if(Number(e.id) === Number(PageProps.id)){
+                return e
+            }
+        })[0]
+
+        if (a != undefined){
+            setTitulo(a.titulo)
+            setEscritor(a.escritor)
+            setTexto(a.estoria)
+        }
     },[])
     
     const handleTitulo = (event:any)=>{
@@ -35,53 +41,82 @@ export default function Escrita(props:any) {
     }
 
     function SalvaEstoria(){
-        let test = estoria.map((a:any)=>{
-            let achou = false
-            if (Number(a.id) === Number(PageProps.id)){
-                achou = true
+        const a = estoria.filter((e:any)=>{
+            if(Number(e.id) === Number(PageProps.id)){
+                return e
             }
-            return achou
-        })
+        })[0]
 
-        console.log(test)
-        // const id = ( estoria.length +1 )
-        // const nova_estoria = {
-        //         'titulo':titulo,
-        //         'escritor':escritor,
-        //         'estoria':texto,
-        //         'id': id,
-        // }
-        // setEstoria([...estoria, nova_estoria])
-        // window.localStorage.setItem('ESTORIAS', JSON.stringify([...estoria, nova_estoria]));
-
+        if (a != null){
+            const outras_estorias = estoria.filter((item:any) => {
+                if(Number(item.id) != Number(PageProps.id)){
+                    return item
+                }
+            })
+            const nova_estoria = {
+                'titulo':titulo,
+                'escritor':escritor,
+                'estoria':texto,
+                'id': Number(PageProps.id),
+            }
+            setEstoria([...outras_estorias, nova_estoria])
+            window.localStorage.setItem('ESTORIAS', JSON.stringify([...outras_estorias, nova_estoria]));
+        } else {
+            const max = estoria.reduce(function(prev:any, current:any) {
+                return (prev && prev.id > current.id) ? prev : current
+            })
+            const id = ( max.id +1 )
+            const nova_estoria = {
+                    'titulo':titulo,
+                    'escritor':escritor,
+                    'estoria':texto,
+                    'id': Number(id),
+            }
+            setEstoria([...estoria, nova_estoria])
+            window.localStorage.setItem('ESTORIAS', JSON.stringify([...estoria, nova_estoria]));
+        }
     }
+
+    const AddTexto = () =>{
+        divArray.push(
+            // <TrechoEstoria key={divArray.length+1}/>
+            <h1 key={divArray.length+1}>Oi</h1>
+        )
+        console.log(divArray)
+    }
+
     
     return (
-    <div className='flex flex-col justify-center items-center w-full h-screen gap-4'>
+    <div className='flex flex-col items-center w-full h-screen gap-4 p-2'>
 
-        <Link className='bg-slate-200 rounded p-2 font-bold' href='/escrita'>Voltar as suas estorias</Link>
-
-        <div
-            className='flex flex-col gap-4 justify-center items-center w-3/4'
-        >
-            <p className='font-bold text-xl'>Nome da História</p>
-            <input
-                value={titulo}
-                onChange={handleTitulo} 
-                className='text-center w-3/4 bg-slate-200' type='text'/>
-
-            <p className='font-bold text-xl'>Escrito Por</p>
-            <input
-                value={escritor}
-                onChange={handleEscritor} 
-                className='text-center w-3/4 bg-slate-200' type='text'/>
-
-            <div className='bg-slate-50 w-3/4'>
-                <ReactQuill theme="snow" readOnly={false} value={texto} onChange={setTexto} />
-            </div>
+        <HeaderEstoria>
             <button 
                 onClick={SalvaEstoria}
                 className='bg-slate-200 p-2 rounded'>Guardar História</button>
+        </HeaderEstoria>
+
+        <div className='flex flex-col gap-4 items-center w-3/4 overflow-auto'>
+
+            <DescricaoEstoria
+                titulo={titulo} handleTitulo={handleTitulo} escritor={escritor} handleEscritor={handleEscritor}
+            />
+
+            <div className='flex gap-8'>
+                <button onClick={()=>AddTexto()}>
+                    Adicionar Texto
+                </button>
+            </div>
+
+                {
+                    divArray.map((div:any)=>{
+                        return(
+                            div
+                        )
+                    })
+                }
+            {/* <TrechoImagem />
+             */}
+
         </div>
     </div>
     )
