@@ -86,6 +86,8 @@ export default function Escrita(props:any) {
         setArr([...arr, value])
     }
 
+    console.log(estoria)
+
     return (
     <div className='flex flex-col items-center w-full h-screen gap-4 p-2'>
 
