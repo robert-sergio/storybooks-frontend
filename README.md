@@ -1,4 +1,4 @@
-# estorias-frontend-react
+# storybooks-frontend
     My Personal Pet Project. :heart_eyes:
     As a personal project, I wont accept any Pull Request but I will be glad if you wish to collaborate by adding your Issues if you find something wrong.
 
