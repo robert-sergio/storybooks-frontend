@@ -1,18 +1,58 @@
 # estorias-frontend-react
-Frontend de aplicação de Estorias Online baseado em React - NextJS
+    My Personal Pet Project. :heart_eyes:
+    As a personal project, I wont accept any Pull Request but I will be glad if you wish to collaborate by adding your Issues if you find something wrong.
 
-## Tasks
+    Frontend repository for a story writing and reading books website.
+    This project was made using NextJS
+
+    Check it out the Figma Prototype to See the future of this baby!:
+    https://www.figma.com/proto/XrA5hDMr1W75lLGUW4GyQ9/Escritor-de-Est%C3%B3rias?type=design&node-id=3-3&t=8ZmQZuYxvlGzzg91-0&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=3%3A3
+
+    This project won't be deployed untill being reasonably good. It may take some months to make it happen.
+
+## Features and Objectives of this website
+
+### Writing Books
+    * Planned
+
+    My objective is to make a writing interface that doesn't saves the book on the backend for default.
+    All your stories will be saved on local storage, and you can then click a button to save on the cloud.
+    Only making this action you will save your book on the backend.
+
+    All the books on the cloud will be private and the user will choose when they want to turn the book public. The writer will also have the power to decide wich chapters will be public or private separately.
+
+    I want to make each page of the book customizable. The writer will be able to chose a page with single text, or text and images, add musics to be played and add effects.
+
+    Effects will be the most nice part of this project. The writer will be able to add effects like rain, sandstorm, snow, space trip, games and others.
+
+    The writers will also be able to choose the art style of the project and search in the AI gallery for arts to compose their books. For example, one can choose Anime Style to the book and search for Anime like scenarios and characters in the gallery.
+
+    * For the Future
+    
+
+### Reading Books
+    My objective is to make a Read books interface that looks like a real book in the frontend.
+    For the reading, all stories will be readed from the backend.
+
+## All Tasks
 
 * [x] Salvar textos escritos no localstorage
 * [x] Apresentar esses textos na pagina de leitura
 * [x] Tela de leitura
 * [x] Editar Estorias
 * [x] Excluir Estorias
-* [z] Adicionar links de imagens
+* [x] Adicionar links de imagens
+* [x] Opção de 1 imagem por tela
+* [ ] Tela criação de Personagens
+* [ ] Validar porque não está salvando os trechos
 * [ ] Nao permitir salvar Estorias sem nome e sem escritor
-* [ ] Adicionar trechos de Estoria
+* [ ] Salvar trechos ao clicar Salvar Estoria
+* [x] Adicionar trechos de Estoria
 * [ ] Excluir trechos de Estoria
 * [ ] Editar trechos de Estoria
+* [ ] Paginação nas paginas de pesquisa
+* [ ] Adicionar Paginas do Livro
+* [ ] Adicionar Efeitos por Pagina
 * [ ] Adicionar campo de Capa do Livro
 * [ ] Download Estoria
 * [ ] Adicionar comentarios aos trechos de leitura

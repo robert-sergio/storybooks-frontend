@@ -8,6 +8,7 @@ export default function DescricaoEstoria(props:any){
                     value={titulo}
                     onChange={handleTitulo} 
                     className='text-center w-3/4 bg-slate-200' type='text'
+                    required={true}
                 />
 
                 <p className='font-bold text-xl'>Escrito Por</p>
@@ -15,6 +16,7 @@ export default function DescricaoEstoria(props:any){
                     value={escritor}
                     onChange={handleEscritor} 
                     className='text-center w-3/4 bg-slate-200' type='text'
+                    required={true}
                 />
         </>
     )

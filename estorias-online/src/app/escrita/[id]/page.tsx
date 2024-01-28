@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import React, { useContext, useEffect, useState } from 'react';
 import 'react-quill/dist/quill.snow.css';
+import Toast from '@/components/gerais/toast';
 
 interface ArrayDivs {
     arr: string[]
@@ -90,11 +91,12 @@ export default function Escrita(props:any) {
 
     return (
     <div className='flex flex-col items-center w-full h-screen gap-4 p-2'>
-
+        <Toast />
         <HeaderEstoria>
             <button 
                 onClick={SalvaEstoria}
-                className='bg-slate-200 p-2 rounded'>Guardar História</button>
+                className='bg-slate-200 p-2 rounded'>Guardar História
+            </button>
         </HeaderEstoria>
 
         <div className='flex flex-col gap-4 items-center w-3/4 overflow-auto'>
@@ -127,7 +129,7 @@ export default function Escrita(props:any) {
                     Adicionar Imagem
                 </button>
             </div>
-            </div>
+        </div>
     </div>
     )
 }
