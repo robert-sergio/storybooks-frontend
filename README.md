@@ -8,6 +8,8 @@
     Check it out the Figma Prototype to See the future of this baby!:
     https://www.figma.com/proto/XrA5hDMr1W75lLGUW4GyQ9/Escritor-de-Est%C3%B3rias?type=design&node-id=3-3&t=8ZmQZuYxvlGzzg91-0&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=3%3A3
 
+    Ps.: The figma is in Portuguese.
+
     This project won't be deployed untill being reasonably good. It may take some months to make it happen.
 
 ## Features and Objectives of this website
