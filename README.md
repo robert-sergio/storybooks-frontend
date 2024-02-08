@@ -45,6 +45,7 @@
 * [x] Excluir Estorias
 * [x] Adicionar links de imagens
 * [x] Opção de 1 imagem por tela
+* [ ] Efeito troca de pagina
 * [ ] Tela criação de Personagens
 * [ ] Validar porque não está salvando os trechos
 * [ ] Nao permitir salvar Estorias sem nome e sem escritor
