@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react';
 
 const DynamicComponentWithNoSSR = dynamic(
-  () => import('../../components/game/game'),
+  () => import('../../components/game_tutorial/game'),
   { ssr: false,
   loading: () => <p className='w-[800px] h-[600px] flex justify-center items-center bg-slate-400'>Loading...</p> }
 );
@@ -15,7 +15,7 @@ export default function Home() {
     console.log('Rodei')
     setElement(
       <>
-        <div className="absolute w-full h-screen">
+        <div className="flex justify-center items-center">
           <DynamicComponentWithNoSSR/>
         </div>
       </>
