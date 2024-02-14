@@ -9,6 +9,7 @@ interface ChatProps {
 interface MessageProps {
     userName: string
     message: string
+    text:string
 }
 
 export default function Chat({userName, socket}:ChatProps) {
@@ -17,7 +18,7 @@ export default function Chat({userName, socket}:ChatProps) {
     const [messageList, setMessageList] = useState<any>([])
 
     useEffect(()=>{
-        socket.on('receive_message', data => {
+        socket.on('receive_message', (data:any) => {
             console.log(data)
             setMessageList((current:[]) => [...current, data])
         })

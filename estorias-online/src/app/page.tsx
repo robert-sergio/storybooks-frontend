@@ -8,7 +8,8 @@ export default function Home() {
         <Link className='bg-slate-200 p-2 rounded' href='/escrita'>Write</Link>
         <Link className='bg-slate-200 p-2 rounded' href='/leitura'>Read </Link>
         <Link className='bg-slate-200 p-2 rounded' href='/reading-component'>See the Reading Component</Link>   
-        <Link className='bg-slate-200 p-2 rounded' href='/chat'>Chat!</Link>
+        {/* Websocket nao vai ser deployado por enquanto. */}
+        {/* <Link className='bg-slate-200 p-2 rounded' href='/chat'>Chat!</Link> */}
         <Link className='bg-slate-200 p-2 rounded' href='/game'>Game!</Link>
     </main>
   )

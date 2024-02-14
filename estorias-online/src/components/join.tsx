@@ -1,6 +1,6 @@
 'use client'
 import React, { useRef, Dispatch, SetStateAction } from 'react'
-import io from 'socket.io-client'
+import * as io from "socket.io-client";
 
 interface JoinProps {
     setLogged: Dispatch<SetStateAction<boolean>>,
