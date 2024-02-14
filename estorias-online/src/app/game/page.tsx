@@ -1,0 +1,32 @@
+'use client'
+import dynamic from 'next/dynamic'
+import { useEffect, useState } from 'react';
+
+const DynamicComponentWithNoSSR = dynamic(
+  () => import('../../components/game/game'),
+  { ssr: false,
+  loading: () => <p className='w-[800px] h-[600px] flex justify-center items-center bg-slate-400'>Loading...</p> }
+);
+
+export default function Home() {
+  const [ element, setElement ] = useState<any>(<></>)
+
+  useEffect(()=>{
+    console.log('Rodei')
+    setElement(
+      <>
+        <div className="absolute w-full h-screen">
+          <DynamicComponentWithNoSSR/>
+        </div>
+      </>
+    )
+  },[])
+
+  return (
+    <main>
+      {
+        element
+      }
+    </main>
+  );
+}
