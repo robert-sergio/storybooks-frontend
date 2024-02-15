@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 const DynamicComponentWithNoSSR = dynamic(
   () => import('../../components/game_tutorial/game'),
   { ssr: false,
-  loading: () => <p className='w-[800px] h-[600px] flex justify-center items-center bg-slate-400'>Loading...</p> }
+  loading: () => <p className='w-[800px] h-[640px] flex justify-center items-center bg-slate-400'>Loading...</p> }
 );
 
 export default function Home() {

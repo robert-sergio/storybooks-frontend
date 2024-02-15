@@ -10,16 +10,25 @@ export default function Game() {
     {
         preload ()
         {
+            this.load.image('tiles','/game/tutorial_1/grass.png')
+            this.load.image('border','/game/tutorial_1/water.png')
+            this.load.tilemapTiledJSON('map','/game/tutorial_1/map.json')
         }
 
         create (){
+            const map = this.make.tilemap({key: 'map'})
+            const tileSetGrass = map.addTilesetImage('grass', 'tiles') as Phaser.Tilemaps.Tileset
+            const tileSetWater = map.addTilesetImage('water', 'border') as Phaser.Tilemaps.Tileset
+
+            const ground = map.createLayer('grass', tileSetGrass, 0, 0)
+            const water = map.createLayer('water', tileSetWater, 0, 0)
         }
     }
 
     const config = {
         type: Phaser.AUTO,
         width: 800,
-        height: 600,
+        height: 640,
         scene: Example,
         scale:{
             autoCenter: Phaser.Scale.CENTER_BOTH,
